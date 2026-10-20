@@ -4,13 +4,13 @@ const buscar = (id) => document.getElementById(id);
 const etapas = [
   {
     titulo: "Etapa 1 — Encha os copos",
-    texto: "Arraste a bebida para os dois copos. Encha os dois para continuar.",
+    texto: "Coloque a bebida para os dois copos. Encha os dois para continuar.",
     dica: "Você também pode clicar nos copos."
   },
   {
     titulo: "Etapa 2 — Coloque os metais",
-    texto: "Coloque uma placa retangular de cobre e uma de zinco em cada copo.",
-    dica: "As duas placas não podem se encostar."
+    texto: "Coloque uma placa de cobre e uma de zinco em cada copo.",
+    dica: "As duas placas não podem se encostar!"
   },
   {
     titulo: "Etapa 3 — Conecte os fios",
@@ -20,7 +20,7 @@ const etapas = [
   {
     titulo: "Etapa 4 — Teste o LED",
     texto: "Clique no botão para testar a luz.",
-    dica: "O LED pode não acender se a energia for insuficiente."
+    dica: "Na experiência real, o LED pode acender fracamente ou não acender se a energia for insuficiente."
   }
 ];
 
@@ -209,7 +209,7 @@ buscar("testarLed").addEventListener("click", () => {
   buscar("lampadaFinal").classList.add("acessa");
 
   buscar("estadoLed").textContent =
-    "Teste concluído! Na experiência real, o LED pode acender fracamente ou não acender se a energia for insuficiente.";
+    "Teste concluído! O LED acendeu! 💡🎉🥳";
 
   buscar("testarLed").disabled = true;
 });

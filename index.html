@@ -6,22 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pilha de Coca-Cola — laboratório interativo</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
-    <section class="header-section">
     <img src="Pilha de Coca-Cola.png" alt="Pilha de Coca-Cola">
+    <section class="header-section">
     <h1> Pilha de Coca-Cola</h1>
-    </section>
-    <h2>Vamos descobrir como uma bebida pode ajudar a produzir eletricidade!</h2>
     <h3>Grupo: Ana Julia, Isabella, João Martins, Julia Sato, Maria Clara, Rafael e Rayssa</h3>
-    <h4>Professora Cida - Matéria Química</h4>
+    <h4>Professora Cida - Matéria: Química 2°A</h4>
+    </section>
   </header>
   
   <main>
     <section class="painel">
-      <h2>Vamos transformar a Coca-Cola em uma pilha!</h2>
-      <p>Complete as quatro etapas e teste!</p>
+      <h2>Vamos descobrir como uma bebida pode ajudar a produzir eletricidade!</h2>
+      <p><strong>Complete as quatro etapas e teste! Precisamos de:</strong></p>
 
       <div class="lista-simples">
         <div>🥤<br><strong>Coca-Cola</strong></div>
@@ -73,9 +75,9 @@
           <!-- ETAPA 1: ENCHER OS COPOS -->
           <div id="jogoEncher">
             <div class="garrafa" id="garrafa"
-                 draggable="true" aria-label="Garrafa de Coca-Cola">🥤</div>
+                 draggable="true" aria-label="Garrafa de Coca-Cola"></div>
 
-            <p><strong>Arraste a bebida para os copos</strong></p>
+            <p><strong>Clique para encher os copos</strong></p>
 
             <div class="linhaCopos">
               <div class="grupoCopo">
@@ -121,11 +123,11 @@
             </div>
 
             <p class="mensagem" id="estadoMetais">
-              As placas ainda estão fora dos copos.
+              As placas estão fora dos copos
             </p>
 
             <button class="botao" id="colocarPlacas">
-              Colocar as placas nos copos
+              Colocar as placas de cobre e zinco nos copos
             </button>
           </div>
 
@@ -165,7 +167,7 @@
             </div>
 
             <p class="mensagem" id="estadoFios">
-              Os fios ainda não estão conectados.
+              Os fios ainda não estão conectados
             </p>
 
             <button class="botao" id="conectarFios">
@@ -173,7 +175,7 @@
             </button>
           </div>
 
-          <!-- ETAPA 4: LÂMPADA SEM COPOS -->
+          <!-- ETAPA 4: LÂMPADA -->
           <div id="jogoLed" class="oculto">
             <div class="lampadaFinal" id="lampadaFinal">
               <div class="brilhoLampada" id="brilhoLampada">💡</div>
@@ -187,10 +189,6 @@
             <button class="botao" id="testarLed">
               Testar o LED
             </button>
-
-            <p class="observacao">
-              A luz pode ficar fraca ou não acender se a energia for insuficiente.
-            </p>
           </div>
 
         </div>
@@ -204,8 +202,6 @@
         <li>O cobre e o zinco são metais diferentes.</li>
         <li>Os fios permitem a passagem da corrente elétrica.</li>
       </ul>
-
-      <p><strong>Será que a luz vai acender?</strong> Vamos testar!</p>
 
       <div class="dicaSeguranca">
         Peça ajuda a um adulto. Não beba a Coca-Cola depois da experiência.
@@ -229,7 +225,7 @@
   </main>
 
   <footer>
-    Experiência educativa • Ciência é observar, testar e aprender!
+    Agradeçemos pela atenção • Ciência é observar, testar e aprender!
   </footer>
     <script src="script.js" defer></script>
 </body>
