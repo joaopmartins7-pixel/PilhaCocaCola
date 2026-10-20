@@ -1,0 +1,438 @@
+
+:root {
+  --vermelho: #c9272c;
+  --escuro: #20212a;
+  --verde: #2d9d78;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, Arial, sans-serif;
+  color: var(--escuro);
+  background: linear-gradient(180deg, #fff7eb, #f7fbff);
+}
+
+header {
+  padding: 26px 18px;
+  text-align: center;
+  color: white;
+  background: var(--vermelho);
+}
+
+.header-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+}
+
+main {
+  max-width: 1050px;
+  margin: auto;
+  padding: 20px;
+}
+
+.painel {
+  margin: 18px 0;
+  padding: 20px;
+  background: white;
+  border: 2px solid #f0e4d7;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px #45270d0c;
+}
+
+main h2 {
+  margin-top: 0;
+  color: #a51e24;
+}
+
+.barra-etapas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.botao-etapa {
+  padding: 9px 13px;
+  color: #333;
+  background: #eee;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.botao-etapa.ativo {
+  color: white;
+  background: var(--vermelho);
+}
+
+.etapa {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  align-items: center;
+}
+
+.instrucoes {
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+
+.observacao {
+  color: #4b5563;
+  font-size: 0.93rem;
+}
+
+.laboratorio {
+  min-width: 0;
+  min-height: 300px;
+  padding: 16px;
+  text-align: center;
+  background: #f5fbff;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.botao {
+  margin: 5px;
+  padding: 12px 17px;
+  color: white;
+  background: var(--vermelho);
+  border: 0;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.acao-secundaria {
+  background: #28364a;
+}
+
+.botao:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.barra-progresso {
+  height: 12px;
+  margin: 14px 0;
+  overflow: hidden;
+  background: #eee;
+  border-radius: 99px;
+}
+
+.barra-progresso div {
+  width: 0;
+  height: 100%;
+  background: var(--verde);
+  transition: width 0.3s;
+}
+
+.lista-simples {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.lista-simples div {
+  padding: 12px;
+  text-align: center;
+  background: #fff5e8;
+  border-radius: 12px;
+}
+
+.metal-mini {
+  display: inline-block;
+  width: 13px;
+  height: 28px;
+  margin: 4px;
+  vertical-align: middle;
+  border: 2px solid;
+}
+
+.cobre-mini {
+  background: #c87545;
+  border-color: #8c4b2d;
+}
+
+.zinco-mini {
+  background: #aab6c0;
+  border-color: #647482;
+}
+
+.garrafa {
+  display: inline-block;
+  font-size: 3.8rem;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+}
+
+.garrafa:active {
+  cursor: grabbing;
+}
+
+.linhaCopos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 28px;
+}
+
+.grupoCopo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.copo {
+  position: relative;
+  width: 100px;
+  height: 120px;
+  overflow: hidden;
+  background: #ffffffb0;
+  border: 4px solid #7b8c99;
+  border-top: 0;
+  border-radius: 0 0 18px 18px;
+}
+
+.liquido {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 0;
+  background: linear-gradient(#7b371d, #4d1f13);
+  transition: height 0.3s;
+}
+
+.liquidoCheio {
+  height: 65%;
+}
+
+.placaMetal {
+  position: absolute;
+  top: 8px;
+  z-index: 2;
+  width: 15px;
+  height: 90px;
+  border: 2px solid;
+  opacity: 0;
+  transform: translateY(-18px);
+  transition: opacity 0.45s, transform 0.45s;
+}
+
+.placaMetal.cobre {
+  left: 18px;
+  background: #c87545;
+  border-color: #8c4b2d;
+}
+
+.placaMetal.zinco {
+  right: 18px;
+  background: #aab6c0;
+  border-color: #647482;
+}
+
+.placaMetal.inserida {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mensagem {
+  padding: 12px;
+  background: #e8f7ef;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.oculto {
+  display: none !important;
+}
+
+/* Etapa 3: fios conectados às placas retangulares */
+.cenaFios {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  height: 260px;
+  margin: 0 auto 10px;
+}
+
+.copoDosFios {
+  position: absolute;
+  top: 75px;
+  z-index: 1;
+  width: 100px;
+}
+
+.primeiroCopo {
+  left: 38px;
+}
+
+.segundoCopo {
+  left: 242px;
+}
+
+.copoDosFios > strong {
+  display: block;
+  margin-top: 8px;
+}
+
+.cenaFios .copo {
+  overflow: visible;
+}
+
+.cenaFios .liquido {
+  z-index: 0;
+  height: 65%;
+  border-radius: 0 0 14px 14px;
+}
+
+.cenaFios .placaMetal {
+  opacity: 1;
+  transform: none;
+}
+
+.desenhoFios {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.fio {
+  fill: none;
+  stroke: #d83a3a;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 8 7;
+  stroke-dashoffset: 600;
+  transition: stroke-dashoffset 1.2s ease;
+}
+
+.fio.conectado {
+  stroke-dashoffset: 0;
+}
+
+.simboloLed {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 4;
+  font-size: 2.5rem;
+  transform: translateX(-50%);
+  transition: filter 0.4s;
+}
+
+/* ETAPA 4: somente a lâmpada */
+.lampadaFinal {
+  min-height: 190px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 12px;
+}
+
+.brilhoLampada {
+  font-size: 7rem;
+  line-height: 1.2;
+  filter: none;
+  transition: filter 0.4s, transform 0.4s;
+}
+
+.baseLampada {
+  width: 34px;
+  height: 15px;
+  margin-top: -3px;
+  background: linear-gradient(
+    90deg,
+    #89939e,
+    #d9e0e7,
+    #89939e
+  );
+  border-radius: 3px 3px 8px 8px;
+}
+
+.lampadaFinal.acessa .brilhoLampada {
+  filter: drop-shadow(0 0 12px #ffd84d)
+          drop-shadow(0 0 28px #ffcf33);
+  transform: scale(1.08);
+}
+
+.questionario button {
+  display: block;
+  width: 100%;
+  margin: 8px 0;
+  padding: 12px;
+  text-align: left;
+  color: #222;
+  background: #f4f7fa;
+  border: 2px solid #dfe6ed;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.questionario button:hover {
+  border-color: var(--vermelho);
+}
+
+#resultadoQuestionario {
+  min-height: 28px;
+  margin-top: 10px;
+  font-weight: 800;
+}
+
+.dicaSeguranca {
+  margin-top: 12px;
+  padding: 12px;
+  background: #fff2c8;
+  border-left: 5px solid #e9aa18;
+  border-radius: 10px;
+}
+
+footer {
+  padding: 24px;
+  text-align: center;
+  color: #59616b;
+}
+
+@media (max-width: 700px) {
+  main {
+    padding: 12px;
+  }
+
+  .etapa {
+    grid-template-columns: 1fr;
+  }
+
+  .primeiroCopo {
+    left: calc(50% - 150px);
+  }
+
+  .segundoCopo {
+    left: calc(50% + 50px);
+  }
+}
+ 
+img{
+    width: 250px;    
+}

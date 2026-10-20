@@ -1,0 +1,236 @@
+
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pilha de Coca-Cola — laboratório interativo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <section class="header-section">
+    <img src="Pilha de Coca-Cola.png" alt="Pilha de Coca-Cola">
+    <h1> Pilha de Coca-Cola</h1>
+    </section>
+    <h2>Vamos descobrir como uma bebida pode ajudar a produzir eletricidade!</h2>
+    <h3>Grupo: Ana Julia, Isabella, João Martins, Julia Sato, Maria Clara, Rafael e Rayssa</h3>
+    <h4>Professora Cida - Matéria Química</h4>
+  </header>
+  
+  <main>
+    <section class="painel">
+      <h2>Vamos transformar a Coca-Cola em uma pilha!</h2>
+      <p>Complete as quatro etapas e teste!</p>
+
+      <div class="lista-simples">
+        <div>🥤<br><strong>Coca-Cola</strong></div>
+        <div>🥤🥤<br><strong>Dois copos</strong></div>
+        <div>
+          <span class="metal-mini cobre-mini"></span>
+          <span class="metal-mini zinco-mini"></span>
+          <br><strong>Cobre e zinco</strong>
+        </div>
+        <div>🔌💡<br><strong>Fios e LED</strong></div>
+      </div>
+    </section>
+
+    <section class="painel">
+      <h2>📋 Etapas da experiência</h2>
+
+      <nav class="barra-etapas" id="barraEtapas">
+        <button class="botao-etapa ativo" data-etapa="0">1. Encher</button>
+        <button class="botao-etapa" data-etapa="1">2. Colocar metais</button>
+        <button class="botao-etapa" data-etapa="2">3. Ligar os fios</button>
+        <button class="botao-etapa" data-etapa="3">4. Testar o LED</button>
+      </nav>
+
+      <div class="barra-progresso">
+        <div id="progresso"></div>
+      </div>
+
+      <div class="etapa">
+        <div class="instrucoes">
+          <h3 id="tituloEtapa">Etapa 1 — Encha os copos</h3>
+          <p id="textoEtapa">
+            Arraste a bebida para os dois copos. Encha os dois para continuar.
+          </p>
+          <p class="observacao" id="dicaEtapa">
+            Você também pode clicar nos copos.
+          </p>
+
+          <button class="botao acao-secundaria" id="reiniciar">
+            Recomeçar
+          </button>
+
+          <button class="botao" id="proximaEtapa" disabled>
+            Próxima etapa →
+          </button>
+        </div>
+
+        <div class="laboratorio">
+
+          <!-- ETAPA 1: ENCHER OS COPOS -->
+          <div id="jogoEncher">
+            <div class="garrafa" id="garrafa"
+                 draggable="true" aria-label="Garrafa de Coca-Cola">🥤</div>
+
+            <p><strong>Arraste a bebida para os copos</strong></p>
+
+            <div class="linhaCopos">
+              <div class="grupoCopo">
+                <div class="copo" data-copo="0">
+                  <div class="liquido" id="liquido0"></div>
+                </div>
+                <strong>Copo 1</strong>
+              </div>
+
+              <div class="grupoCopo">
+                <div class="copo" data-copo="1">
+                  <div class="liquido" id="liquido1"></div>
+                </div>
+                <strong>Copo 2</strong>
+              </div>
+            </div>
+
+            <p id="estadoEnchimento" aria-live="polite">
+              Copo 1: vazio · Copo 2: vazio
+            </p>
+          </div>
+
+          <!-- ETAPA 2: COLOCAR AS PLACAS -->
+          <div id="jogoMetais" class="oculto">
+            <div class="linhaCopos">
+              <div class="grupoCopo">
+                <div class="copo copoComLiquido">
+                  <div class="liquido liquidoCheio"></div>
+                  <div class="placaMetal cobre" id="cobre0"></div>
+                  <div class="placaMetal zinco" id="zinco0"></div>
+                </div>
+                <strong>Copo 1</strong>
+              </div>
+
+              <div class="grupoCopo">
+                <div class="copo copoComLiquido">
+                  <div class="liquido liquidoCheio"></div>
+                  <div class="placaMetal cobre" id="cobre1"></div>
+                  <div class="placaMetal zinco" id="zinco1"></div>
+                </div>
+                <strong>Copo 2</strong>
+              </div>
+            </div>
+
+            <p class="mensagem" id="estadoMetais">
+              As placas ainda estão fora dos copos.
+            </p>
+
+            <button class="botao" id="colocarPlacas">
+              Colocar as placas nos copos
+            </button>
+          </div>
+
+          <!-- ETAPA 3: CONECTAR OS FIOS -->
+          <div id="jogoFios" class="oculto">
+            <div class="cenaFios">
+              <div class="simboloLed" id="ledFios">💡</div>
+
+              <div class="copoDosFios primeiroCopo">
+                <div class="copo copoComLiquido">
+                  <div class="liquido liquidoCheio"></div>
+                  <div class="placaMetal cobre inserida"></div>
+                  <div class="placaMetal zinco inserida"></div>
+                </div>
+                <strong>Copo 1</strong>
+              </div>
+
+              <div class="copoDosFios segundoCopo">
+                <div class="copo copoComLiquido">
+                  <div class="liquido liquidoCheio"></div>
+                  <div class="placaMetal cobre inserida"></div>
+                  <div class="placaMetal zinco inserida"></div>
+                </div>
+                <strong>Copo 2</strong>
+              </div>
+
+              <svg class="desenhoFios" viewBox="0 0 380 200"
+                   preserveAspectRatio="none"
+                   role="img" aria-label="Fios conectando as placas ao LED">
+                <path id="fioA" class="fio"
+                      d="M56 85 C56 24 132 20 165 24"/>
+                <path id="fioB" class="fio"
+                      d="M105 85 C105 128 275 128 275 85"/>
+                <path id="fioC" class="fio"
+                      d="M324 85 C324 24 248 20 215 24"/>
+              </svg>
+            </div>
+
+            <p class="mensagem" id="estadoFios">
+              Os fios ainda não estão conectados.
+            </p>
+
+            <button class="botao" id="conectarFios">
+              Conectar os fios
+            </button>
+          </div>
+
+          <!-- ETAPA 4: LÂMPADA SEM COPOS -->
+          <div id="jogoLed" class="oculto">
+            <div class="lampadaFinal" id="lampadaFinal">
+              <div class="brilhoLampada" id="brilhoLampada">💡</div>
+              <div class="baseLampada"></div>
+            </div>
+
+            <p id="estadoLed">
+              Circuito montado! Vamos testar.
+            </p>
+
+            <button class="botao" id="testarLed">
+              Testar o LED
+            </button>
+
+            <p class="observacao">
+              A luz pode ficar fraca ou não acender se a energia for insuficiente.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="painel">
+      <h2>💡 Como funciona?</h2>
+      <ul>
+        <li>A Coca-Cola funciona como líquido condutor.</li>
+        <li>O cobre e o zinco são metais diferentes.</li>
+        <li>Os fios permitem a passagem da corrente elétrica.</li>
+      </ul>
+
+      <p><strong>Será que a luz vai acender?</strong> Vamos testar!</p>
+
+      <div class="dicaSeguranca">
+        Peça ajuda a um adulto. Não beba a Coca-Cola depois da experiência.
+      </div>
+    </section>
+
+    <section class="painel questionario">
+      <h2>🎯 Vamos ver o que aprendemos?</h2>
+      <p><strong>Qual é o trabalho dos fios?</strong></p>
+
+      <button data-resposta="errada">Dar sabor à Coca-Cola.</button>
+
+      <button data-resposta="certa">
+        Criar um caminho para a corrente elétrica circular.
+      </button>
+
+      <button data-resposta="errada">Fazer os metais desaparecerem.</button>
+
+      <div id="resultadoQuestionario" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer>
+    Experiência educativa • Ciência é observar, testar e aprender!
+  </footer>
+    <script src="script.js" defer></script>
+</body>
+</html>
